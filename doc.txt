@@ -1,0 +1,38 @@
+EasyEngine Documentation Localhost Installation
+Create new folder in localhost Directory
+i.e /var/www/html
+Go to localhost folder (mine is /var/www/html/new_folder)
+make sure the current user has the write permissions
+change the owner of the new_folder
+$> chown -R username:username /var/www/html/new_folder
+Change the permission of the folder
+$> chmod -R 775 /var/www/html/new_folder
+Install Easyengine:-
+$> wget -qO ee rt.cx/ee4 && sudo bash ee
+(If still not works change the owner of the folders to current user)
+Change the owner  /opt/easyengine/ folder to current user
+Change the owner /usr/local/bin folder to current user
+Give Permissions to /opt/easyengine/ folder
+Give Permissions to /usr/local/bin folder
+Open New tab in command line and enter command (this will show the logs for EasyEngine):-
+$> tail -f /opt/easyengine/logs/ee.log
+Creating Php and Mysql Site using easyengine:-
+$> ee site create example.com --mysql   (IF YOU FACE DOCKER NOT INSTALL ERROR SEE BELOW DOCKER ISSUE SECTION)
+take a look for other options here
+https://easyengine.io/docs/commands/site/create/
+DOCKER ISSUE:-
+Error: Docker not installed or not running.
+.. Install Docker
+$> sudo apt-get install docker
+.. After Installation Check Docker is running
+$> sudo systemctl status docker
+.. Check Version of Docker
+$> docker -v
+don't forget to see the /opt/easyengine/logs/ee.log we opened in new tab
+..Add the current user to the DOCKER group
+$> sudo usermod -a -G docker $USER
+Give permission to
+/var/run/docker
+/var/run/docker.pid
+/var/run/docker.sock
+after this logout and login again then try running create site ee command
