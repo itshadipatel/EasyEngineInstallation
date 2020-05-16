@@ -36,3 +36,16 @@ Give permission to
 /var/run/docker.pid
 /var/run/docker.sock
 after this logout and login again then try running create site ee command
+
+
+
+IMPORT AND EXPORT MYSQL FILE
+
+
+EXPORT MYSQL FROM DOCKER
+docker exec -i MYSQL_CONTAINER_NAME mysqldump -uUSERNAME -pPASSWORD DATABASE_TO_EXPORT > /path/to/my/dump.sql
+
+
+IMPORT MYSQL TO DOCKER
+docker exec -i MYSQL_CONTAINER_NAME mysql -uUSERNAME -pYOUR_PASSWORD DATABASE_NAME < SQL_FILE_TO_IMPORT.sql
+
